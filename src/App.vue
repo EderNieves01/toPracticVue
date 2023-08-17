@@ -7,7 +7,7 @@ const styleColor = "color: blue"
 
 <template>
 
-  <h1>{{name}}</h1>  
+  <h1>{{name.toUpperCase()}}</h1>  
   <h2 v-bind:style="styleColor">Soy azul</h2>
   
 </template>
