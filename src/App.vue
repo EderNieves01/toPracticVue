@@ -2,13 +2,15 @@
 <!-- v-bind:style="namevar" esto agrega una variable como atributo -->
 <script setup>
 const name = 'Vue dinamico';
-const styleColor = "color: blue"
+const styleColor = "color: blue";
+const arrayColores = ["blue", "red", "peru"];
 </script>
 
 <template>
 
   <h1>{{name.toUpperCase()}}</h1>  
-  <h2 v-bind:style="styleColor">Soy azul</h2>
+  <h2>{{ arrayColores }}</h2>
+  <h2 :style="`color: ${arrayColores[2]}`">Soy peru</h2>
   
 </template>
 
