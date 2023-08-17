@@ -11,7 +11,23 @@ entre medio pero si dentro de la misma etiqueta -->
 <script setup>
 
 const name = 'Vue dinamico';
-const arrayFrutas = ["pera", "banana", "tomates"];
+const arrayFrutas = [
+  {
+    name: "pera",
+    price: "$1",
+    description: "una pera"
+  },
+  {
+    name: "manzana",
+    price: "$1",
+    description: "manzana"
+  },
+  {
+    name: "banana",
+    price: "$1",
+    description: "una banana"
+  }
+];
 
 </script>
 
@@ -19,10 +35,8 @@ const arrayFrutas = ["pera", "banana", "tomates"];
 
   <h1>{{name.toUpperCase()}}</h1> 
   <ul>
-    <li v-for="(frutas, index) in arrayFrutas" :key="index">
-
-      {{ index }} - {{ frutas }}
-
+    <li v-for="frutas in arrayFrutas" :key="frutas.name">
+   {{ frutas.name }} - {{ frutas.price }} - {{ frutas.description }}
     </li>
   </ul>
 
