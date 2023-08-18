@@ -6,44 +6,57 @@
 <!-- no puede contener interrupcion en su ejecucion por ej: un p o un h 
 entre medio pero si dentro de la misma etiqueta -->
 <!-- v-show muestra una etiqueta -->
-<!-- v-for itera sobre una lista de elementos como un bucle for normal pasarle la :key con del indice-->
+<!-- v-for itera sobre una lista de elementos como un array o un objeto como un bucle
+ for normal pasarle la :key con del indice-->
+<!-- value en objeto es el contenido y la propiedad es el atributo, tambien recibe el inex -->
+<!-- v-for con v-if, el v-if tiene mayor prioridad por eso se coloca antes del v-for,
+ tambien podemos poner el v-for first and then v-if incide of a spam-->
 
 <script setup>
 
 const name = 'Vue dinamico';
-const arrayFrutas = [
+const arrayFruta = [
   {
-    name: "pera",
-    price: "$1",
-    description: "una pera"
-  },
-  {
-    name: "manzana",
-    price: "$1",
-    description: "manzana"
-  },
-  {
-    name: "banana",
-    price: "$1",
-    description: "una banana"
-  }
-];
-
+  name: "pera",
+  price: "$1",
+  description: "una pera",
+  strock: 10
+},
+{
+  name: "manzana",
+  price: "$1",
+  description: "una pera",
+  strock: 20
+},
+{
+  name: "banana",
+  price: "$1",
+  description: "una pera",
+  strock: 30
+}
+]
 </script>
 
 <template>
 
   <h1>{{name.toUpperCase()}}</h1> 
   <ul>
-    <li v-for="frutas in arrayFrutas" :key="frutas.name">
-   {{ frutas.name }} - {{ frutas.price }} - {{ frutas.description }}
+    <!-- colocamos el v-for dentro de la etiqueta template que no se representa
+    en el html y luego el v-if en la li  -->
+    <template v-for="( frutas, index )  in arrayFruta " :key=" index ">
+
+      <!-- se muestran los objetos que su stock sea mayor a 10 -->
+      <li v-if=" frutas.strock > 10 ">
+        {{ index }} -  {{ frutas.name }}
     </li>
+
+    </template>
   </ul>
 
 </template>
 
 <style>
 h1 {
-  color: red;
+  color: white;
 }
 </style>
