@@ -11,48 +11,23 @@ entre medio pero si dentro de la misma etiqueta -->
 <!-- value en objeto es el contenido y la propiedad es el atributo, tambien recibe el inex -->
 <!-- v-for con v-if, el v-if tiene mayor prioridad por eso se coloca antes del v-for,
  tambien podemos poner el v-for first and then v-if incide of a spam-->
-
+<!-- v-on:click o abreviado @click son los eventos al dar click-->
 <script setup>
 
 const name = 'Vue dinamico';
-const arrayFruta = [
-  {
-  name: "pera",
-  price: "$1",
-  description: "una pera",
-  strock: 10
-},
-{
-  name: "manzana",
-  price: "$1",
-  description: "una pera",
-  strock: 20
-},
-{
-  name: "banana",
-  price: "$1",
-  description: "una pera",
-  strock: 30
-}
-]
+// metodos - methods
+const handleClick = (message) => {
+   console.log(message)
+};
 </script>
 
 <template>
 
   <h1>{{name.toUpperCase()}}</h1> 
-  <ul>
-    <!-- colocamos el v-for dentro de la etiqueta template que no se representa
-    en el html y luego el v-if en la li  -->
-    <template v-for="( frutas, index )  in arrayFruta " :key=" index ">
-
-      <!-- se muestran los objetos que su stock sea mayor a 10 -->
-      <li v-if=" frutas.strock > 10 ">
-        {{ index }} -  {{ frutas.name }}
-    </li>
-
-    </template>
-  </ul>
-
+   <!-- podemos utilizar los parentesis en la funcion cuando resiva parametros -->
+  <button @click="handleClick('texto 1')">Ativame1</button>
+  <button v-on:click="handleClick('texto 2')">Ativame2</button>
+  
 </template>
 
 <style>
