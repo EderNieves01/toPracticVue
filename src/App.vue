@@ -12,29 +12,38 @@ entre medio pero si dentro de la misma etiqueta -->
 <!-- v-for con v-if, el v-if tiene mayor prioridad por eso se coloca antes del v-for,
  tambien podemos poner el v-for first and then v-if incide of a spam-->
 <!-- v-on:click o abreviado @click son los eventos al dar click-->
+
 <script setup>
 
+//importamos estos para asignarselo a cualquier variable para que sea reactiva
+import { ref } from 'vue';
+
 const name = 'Vue dinamico';
+
+//variable o constante reactiva para poder renderizar el valor sin 
+//necesidad de volver a cargar la pagina para que sea mas dinamico
+//sin esto el valor de counter en el html no cambiara aunque puede mostrarse en consola
+
+const counter = ref(0);
+
 // metodos - methods
-const handleClick = (message) => {
-   console.log(message)
-};
+
+const increment = () => {
+
+  //aqui obtenemos el value de esa const
+  counter.value ++;
+  console.log(counter.value)
+}
+
 </script>
 
 <template>
 
   <h1>{{name.toUpperCase()}}</h1> 
-   
-  <!-- podemos utilizar los parentesis en la funcion cuando resiva
-     parametros y escuchar eventos con diferentes lados del raton
-    prevent en click right para evitar que salga el cuadro de opciones-->
-   <!-- activar cuando presione click izquierdo -->
-   <button @click.right.prevent="handleClick('texto derecho')">Ativame left</button>
-  <!-- activar cuando presione derecho -->
-   <button v-on:click.left="handleClick('texto izquierdo')">Ativame right</button>
-  <!-- activar cuando presione click en medio -->
-   <button v-on:click.middle="handleClick('texto centro')">Ativamemiddle</button>
 
+  <!-- renderizar el h2 para que cambie el 0-->
+   <h2>{{ counter }}</h2>
+  <button @click="increment">increment</button>
 </template>
 
 <style>
