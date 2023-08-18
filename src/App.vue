@@ -24,10 +24,17 @@ const handleClick = (message) => {
 <template>
 
   <h1>{{name.toUpperCase()}}</h1> 
-   <!-- podemos utilizar los parentesis en la funcion cuando resiva parametros -->
-  <button @click="handleClick('texto 1')">Ativame1</button>
-  <button v-on:click="handleClick('texto 2')">Ativame2</button>
-  
+   
+  <!-- podemos utilizar los parentesis en la funcion cuando resiva
+     parametros y escuchar eventos con diferentes lados del raton
+    prevent en click right para evitar que salga el cuadro de opciones-->
+   <!-- activar cuando presione click izquierdo -->
+   <button @click.right.prevent="handleClick('texto derecho')">Ativame left</button>
+  <!-- activar cuando presione derecho -->
+   <button v-on:click.left="handleClick('texto izquierdo')">Ativame right</button>
+  <!-- activar cuando presione click en medio -->
+   <button v-on:click.middle="handleClick('texto centro')">Ativamemiddle</button>
+
 </template>
 
 <style>
