@@ -16,7 +16,8 @@ entre medio pero si dentro de la misma etiqueta -->
 <script setup>
 
 //importamos estos para asignarselo a cualquier variable para que sea reactiva
-import { ref } from 'vue';
+//computed realizar un computo, propiedades computadas
+import { ref, computed } from 'vue';
 
 const name = 'Vue dinamico';
 
@@ -29,12 +30,26 @@ const counter = ref(0);
 // metodos - methods
 
 const increment = () => {
-
-  //aqui obtenemos el value de esa const
   counter.value ++;
-  console.log(counter.value)
 }
 
+//puede ir sin corchetes
+const decrement = () => counter.value --;
+
+const reset = () => {
+  counter.value = 0;
+}
+
+//clase que retorna una propiedad computada desde el style class
+const classCounter = computed(() =>{
+  if(counter.value === 0){
+    return 'zero'
+  }else if( counter.value > 0){
+    return 'positive'
+  }else{
+    return 'negative'
+  }
+})
 </script>
 
 <template>
@@ -42,12 +57,27 @@ const increment = () => {
   <h1>{{name.toUpperCase()}}</h1> 
 
   <!-- renderizar el h2 para que cambie el 0-->
-   <h2>{{ counter }}</h2>
+
+   <h2 :class="classCounter">{{ counter }}</h2>
+
   <button @click="increment">increment</button>
+  <button @click="decrement">decrement</button>
+  <button @click="reset">reset</button>
 </template>
 
 <style>
 h1 {
   color: white;
+}
+
+/* propiedades para ser computadas */
+.positive{
+  color: green;
+}
+.negative{
+  color: red;
+}
+.zero{
+  color: peru;
 }
 </style>
