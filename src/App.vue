@@ -1,17 +1,3 @@
-<!-- doble llaves {{variable}} imprime variables dentro de la etiqueta -->
-<!-- v-bind:style="namevar" esto agrega una variable como atributo -->
-<!-- {{ activo ? "Estoy activo" : "Estoy inactivo" }} condicional if de corta funcion -->
-<!-- acepta todo lo que tenga un retorno inmediato -->
-<!-- v-if v-else-if v-else dentro de la etiqueta como condicionales -->
-<!-- no puede contener interrupcion en su ejecucion por ej: un p o un h 
-entre medio pero si dentro de la misma etiqueta -->
-<!-- v-show muestra una etiqueta -->
-<!-- v-for itera sobre una lista de elementos como un array o un objeto como un bucle
- for normal pasarle la :key con del indice-->
-<!-- value en objeto es el contenido y la propiedad es el atributo, tambien recibe el inex -->
-<!-- v-for con v-if, el v-if tiene mayor prioridad por eso se coloca antes del v-for,
- tambien podemos poner el v-for first and then v-if incide of a spam-->
-<!-- v-on:click o abreviado @click son los eventos al dar click-->
 
 <script setup>
 
@@ -73,6 +59,8 @@ const classCounter = computed(() =>{
 </script>
 
 <template>
+<div class="container">
+
 
   <h1 v-bind:style="colorP">{{name.toUpperCase()}}</h1> 
 
@@ -91,9 +79,16 @@ const classCounter = computed(() =>{
   {{ num }}
 </li>
   </ul>
+</div>
 </template>
-2
-<style>
+
+<!-- restringe los estilos css a solo esta parte del codigo
+si queremos hacer otro html no aplicaria estos estilos -->
+<style scoped>
+/* tambien puedo importar la carpeta css aqui adentro */
+.container{
+  text-align: center;
+}
 h1 {
   color: red;
 }
