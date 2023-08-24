@@ -92,7 +92,7 @@ const classCounter = computed(() =>{
 </li>
   </ul>
 </template>
-
+2
 <style>
 h1 {
   color: red;
