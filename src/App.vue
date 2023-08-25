@@ -14,5 +14,12 @@ export default {
   <!-- aqui llamamos el componente card da igual si la primera letra es mayuscula o
   minuscula y cerramos la etiqueta-->
   <card />
+  <card />
+  <card />
 </template>
 
+<style>
+h1{
+  text-align: center;
+}
+</style>
