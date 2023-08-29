@@ -4,8 +4,10 @@ necesarios como el script, el template y el style-->
 <template>
 
 <div>
+    
     <img src="https://cdn.svgporn.com/logos/vue.svg?response-content-disposition=attachment%3Bfilename%3Dvue.svg" 
     alt="vue.js">
+
     <h2>vue.js</h2>
 
     <a href="https://cdn.svgporn.com/logos/vue.svg?response-content-disposition=attachment%3Bfilename%3Dvue.svg"
